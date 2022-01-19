@@ -1,5 +1,5 @@
 import re
-from typing						import Iterable, List, Dict, NewType, TypeVar, Union, Any
+from typing						import List, Dict, NewType, TypeVar, Any
 
 ObjectField                     = TypeVar( 'ObjectField' , str , int )
 ObjectFields                    = NewType( 'ObjectFields' , List[ ObjectField ] )

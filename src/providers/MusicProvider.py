@@ -45,7 +45,6 @@ class MusicProvider:
     def login_basic( self , * , username : str , password : str ):
         return self.login(
             headers     = { 'Authorization' : 'Basic ' + b64encode( f'{username}:{password}'.encode() ).decode() },
-            # Only for Spotify?
             data        = { 'grant_type' : 'client_credentials' }
         )
 
@@ -59,14 +58,8 @@ class MusicProvider:
 
     def get_endpoint( self , endpoint_name : str , **query : Mapping ) -> str :
         try:
-            # print( f'MusicProvider<{ self.__name }>.endpoint_parameters = { endpoint_parameters }' )
             endpoint = self.endpoint( endpoint_name ).substitute( **query )
-            # print( f'MusicProvider<{ self.__name }>.endpoint = { endpoint }' )
-        except KeyError as e:
-            print( f'MusicProvider.getEndpoint : EXCEPTION KeyError = {e}' )
-            return None
         except Exception as e:
-            print( f'MusicProvider.getEndpoint : EXCEPTION = {e}' )
             return None
         else:
             return endpoint

@@ -12,9 +12,6 @@ class Network:
     def __init__(self) -> None:
         self.__requests         = requests
 
-    # def set_header( self , * , key , value ) -> None :
-    #     self.__headers.__setattr__( key , value )
-
     def __request(
         self , * ,
         method          : HTTPMethod    = HTTPMethod.GET,
@@ -25,14 +22,13 @@ class Network:
     ):
         if debug is True:
             print_msg("info", curl(url, method, data, headers))
-            # print_msg("info", powershell(url, method, data, headers))
         result  = getattr( self.__requests , method.value )(
             url         = url,
             data        = data,
             headers     = headers
         )
         return result
-
+ 
     def request(
         self , * ,
         method          : HTTPMethod        = HTTPMethod.GET,
